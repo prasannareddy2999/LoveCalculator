@@ -3,11 +3,16 @@
 <html>
 <head>
 <title>Love Calculator</title>
+<script type="tet/javascript">
+function validateUserName(){
+
+}
+</script>
 </head>
 
 <body>
 <h1 align="center">Love Calculator</h1>
-<form:form action="process-homepage" method="get" modelAttribute="userInfo">
+<form:form action="process-homepage" method="get" modelAttribute="userInfo" onsubmit="return validateUserName()">
 <div align="center">
 <p>
 <label for="yn">Your Name:</label>

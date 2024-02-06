@@ -1,6 +1,7 @@
 package controllers;
 
 import api.UserInfoDTO;
+import api.UserRegistrationDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,13 @@ public class LCAppController {
     {
 
         return "home-page";
+    }
+
+    @RequestMapping("/register")
+    public String showRegistrationPage(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO)
+    {
+
+        return "registration-page";
     }
     @RequestMapping("/process-homepage")
     public String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result)

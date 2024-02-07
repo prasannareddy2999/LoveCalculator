@@ -3,6 +3,16 @@ package api;
 import java.util.Arrays;
 
 public class UserRegistrationDTO {
+
+    public CommunicationDTO getCommunicationDTO() {
+        return communicationDTO;
+    }
+
+    public void setCommunicationDTO(CommunicationDTO communicationDTO) {
+        this.communicationDTO = communicationDTO;
+    }
+
+    private CommunicationDTO communicationDTO;
     public String getName() {
         return name;
     }
@@ -11,7 +21,7 @@ public class UserRegistrationDTO {
         this.name = name;
     }
 
-    private String name="your name";
+    private String name;
 
     public String getUserName() {
         return userName;
@@ -45,10 +55,10 @@ public class UserRegistrationDTO {
         this.hobby = hobby;
     }
 
-    private String userName="username";
-    private String Password="pass";
-    private String country="India";
-    private String[] hobby={"Travel","Reading"};
+    private String userName;
+    private String Password;
+    private String country;
+    private String[] hobby;
 
     public String getGender() {
         return gender;
@@ -58,7 +68,7 @@ public class UserRegistrationDTO {
         this.gender = gender;
     }
 
-    private String gender="Female";
+    private String gender;
 
     @Override
     public String toString() {

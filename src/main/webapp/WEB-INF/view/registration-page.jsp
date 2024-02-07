@@ -29,7 +29,7 @@ function validateUserName(){
 
 <body>
 <h1 align="center">Love Calculator</h1>
-<form:form action="process-homepage" method="get" modelAttribute="userRegistrationDTO">
+<form:form action="process-registerpage" method="get" modelAttribute="userRegistrationDTO">
 <div align="center">
 <p>
 <label for="name">Name:</label>
@@ -73,10 +73,23 @@ function validateUserName(){
 
 <p>
 <label for="Gender">Gender</label>
-<form:radiobutton path="Gender" value="Male"/>
+<form:radiobutton path="gender" value="Male"/>
 <label for="Male">Male</label>
-<form:radiobutton path="Gender" value="Female"/>
+<form:radiobutton path="gender" value="Female"/>
 <label for="Female">Female</label>
+</p>
+
+
+<p align="center">
+<h3>Communication</h3>
+<label for="email">email:</label>
+<form:input  id="email" path="communicationDTO.email"/>
+<form:errors path="communicationDTO.email" cssClass="error"/>
+</p>
+<p>
+<label for="phone">Phone:</label>
+<form:input  id="phone" path="communicationDTO.phone"/>
+<form:errors path="communicationDTO.phone" cssClass="error"/>
 </p>
 
 <input type="submit" value="calculate"/>

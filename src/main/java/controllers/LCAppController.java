@@ -1,5 +1,7 @@
 package controllers;
 
+import api.CommunicationDTO;
+import api.Phone;
 import api.UserInfoDTO;
 import api.UserRegistrationDTO;
 import jakarta.validation.Valid;
@@ -24,8 +26,24 @@ public class LCAppController {
     @RequestMapping("/register")
     public String showRegistrationPage(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO)
     {
+        System.out.println("inside Registration-page method");
+        Phone phone=new Phone();
+        phone.setCountryCode("91");
+        phone.setUserNumber("123456");
+        CommunicationDTO communicationDTO=new CommunicationDTO();
+        communicationDTO.setPhone(phone);
+        userRegistrationDTO.setCommunicationDTO(communicationDTO);
 
         return "registration-page";
+    }
+
+    @RequestMapping("/process-registerpage")
+    public String showRegisterResultPage(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO)
+    {
+
+
+
+        return "registrationsucess-page";
     }
     @RequestMapping("/process-homepage")
     public String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result)

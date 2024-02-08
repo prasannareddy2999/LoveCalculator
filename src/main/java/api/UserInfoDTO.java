@@ -21,6 +21,7 @@ public class UserInfoDTO {
    @AssertTrue(message = "You have to agree to our terms and conditions")
     private boolean termAndCondition;
 
+
     public String getCrushName() {
         return crushName;
     }

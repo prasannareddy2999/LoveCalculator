@@ -1,8 +1,22 @@
 package api;
 
+import Validator.Age;
+
 import java.util.Arrays;
 
 public class UserRegistrationDTO {
+
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Age(lower=19,upper=60,message="the age should be between 18 to 60")
+    private Integer age;
 
     public CommunicationDTO getCommunicationDTO() {
         return communicationDTO;

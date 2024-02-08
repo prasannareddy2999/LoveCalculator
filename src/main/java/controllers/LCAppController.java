@@ -24,8 +24,20 @@ public class LCAppController {
     }
 
     @RequestMapping("/register")
-    public String showRegistrationPage(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO)
+    public String showRegistrationPage(@Valid @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO,BindingResult result)
     {
+
+        if(result.hasErrors())
+        {
+            System.out.println("My page has errors");
+            List<ObjectError> allErrors=result.getAllErrors();
+            for(ObjectError error:allErrors)
+            {
+                System.out.println(error);
+            }
+
+
+        }
         System.out.println("inside Registration-page method");
         Phone phone=new Phone();
         phone.setCountryCode("91");

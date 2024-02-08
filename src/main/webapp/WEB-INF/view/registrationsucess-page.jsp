@@ -12,6 +12,7 @@
 <p>Country is ${userRegistrationDTO.country}</p>
 <p>Hobby is ${userRegistrationDTO.hobby}</p>
 <p>Gender is ${userRegistrationDTO.gender}</p>
+<p>age is ${userRegistrationDTO.age}</p>
 <p>email is ${userRegistrationDTO.communicationDTO.email}</p>
 
 </body>

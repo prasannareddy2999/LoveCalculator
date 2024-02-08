@@ -50,6 +50,13 @@ function validateUserName(){
 </p>
 
 <p>
+<label for="age">Age:</label>
+<form:input  id="age" path="age"/>
+<form:errors path="age" cssClass="error"/>
+</p>
+
+
+<p>
 <label for="cntry">Country</label>
 <form:select path="country">
 <form:option value="India" label="India"/>

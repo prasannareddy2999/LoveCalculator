@@ -5,9 +5,13 @@
 
 <body>
 <p>Welcome to Love Calculator</p>
-
-<p>User Name is ${userInfo.userName}</p>
-<p>Crush Name is ${userInfo.crushName}</p>
+<h2> Love Calculator Predicts </h2>
+</br>
+<p> ${userInfo.userName} and ${userInfo.crushName} are </p>
+</br>
+FRIEND
+</br>
+<a href="/sendEmail">Send result to email</a>
 </body>
 
 </html>

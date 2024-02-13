@@ -24,10 +24,10 @@ public class LCAppController {
     }
 
     @RequestMapping("/register")
-    public String showRegistrationPage(@Valid @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO,BindingResult result)
+    public String showRegistrationPage( @ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO)
     {
 
-        if(result.hasErrors())
+        /*if(result.hasErrors())
         {
             System.out.println("My page has errors");
             List<ObjectError> allErrors=result.getAllErrors();
@@ -44,7 +44,7 @@ public class LCAppController {
         phone.setUserNumber("123456");
         CommunicationDTO communicationDTO=new CommunicationDTO();
         communicationDTO.setPhone(phone);
-        userRegistrationDTO.setCommunicationDTO(communicationDTO);
+        userRegistrationDTO.setCommunicationDTO(communicationDTO);*/
 
         return "registration-page";
     }
@@ -69,6 +69,9 @@ public class LCAppController {
 
             return "home-page";
         }
+
+        // write a service which will calculate the love percentatege between user and crush
+
         return "result-page";
     }
 }

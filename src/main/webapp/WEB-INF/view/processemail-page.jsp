@@ -4,8 +4,8 @@
 </head>
 
 <body>
-
-<h2>Email asuccessfully sent to {emailDTO}</h2>
+<h1> Hi ${userinfo.username}</h1>
+<h2>Email successfully sent to ${emailDTO.userEmail}</h2>
 
 </body>
 

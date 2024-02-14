@@ -4,6 +4,9 @@ import api.CommunicationDTO;
 import api.Phone;
 import api.UserInfoDTO;
 import api.UserRegistrationDTO;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,9 +20,17 @@ import java.util.List;
 @Controller
 public class LCAppController {
     @RequestMapping("/")
-    public String showHomepAge(@ModelAttribute("userInfo") UserInfoDTO userInfoDTO)
+    public String showHomepAge(@ModelAttribute("userInfo") UserInfoDTO userInfoDTO, HttpServletRequest request)
     {
-
+        Cookie[] cookies=request.getCookies();
+        for(Cookie temp: cookies)
+        {
+            if("lcApp.userName".equals(temp))
+            {
+                String myUserName=temp.getValue();
+                userInfoDTO.setUserName(myUserName);
+            }
+        }
         return "home-page";
     }
 
@@ -58,7 +69,7 @@ public class LCAppController {
         return "registrationsucess-page";
     }
     @RequestMapping("/process-homepage")
-    public String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result)
+    public String showResultPage(@Valid @ModelAttribute("userInfo") UserInfoDTO userInfoDTO, BindingResult result, HttpServletResponse response)
     {
         System.out.println("In controller");
 
@@ -71,6 +82,10 @@ public class LCAppController {
         }
 
         // write a service which will calculate the love percentatege between user and crush
+
+        Cookie  theCookie = new Cookie("lcApp.userName", userInfoDTO.getUserName());
+        theCookie.setMaxAge(60*60*24);
+        response.addCookie(theCookie);
 
         return "result-page";
     }

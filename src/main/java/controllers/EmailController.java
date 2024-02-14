@@ -2,7 +2,9 @@ package controllers;
 
 import api.EmailDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,7 +14,7 @@ public class EmailController {
     {
         return "sendemail-page";
     }
-    @RequestMapping("/processEMail")
+    @RequestMapping("/processEmail")
     public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO)
     {
         return "processemail-page";

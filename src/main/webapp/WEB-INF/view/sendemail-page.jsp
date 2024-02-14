@@ -28,10 +28,10 @@ function validateUserName(){
 </head>
 
 <body>
-<h1 align="center">Hi </h1>
+<h1 align="center">Hi</h1>
 <h2 align="center">Sent result to your email </h1>
 
-<form:form action="process-email" method="get" modelAttribute="emailDTO">
+<form:form action="processEmail" method="get" modelAttribute="emailDTO">
 <div align="center">
 <p>
 <label >Enter your email</label>

@@ -11,7 +11,7 @@
 </br>
 FRIEND
 </br>
-<a href="/sendEmail">Send result to email</a>
+<a href="/spring-love-calculator/sendEmail">Send result to email</a>
 </body>
 
 </html>

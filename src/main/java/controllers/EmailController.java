@@ -1,16 +1,19 @@
 package controllers;
 
 import api.EmailDTO;
+import api.UserInfoDTO;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import service.LcAppEmailService;
+import service.LcAppEmailServiceImpl;
 
 @Controller
 public class EmailController {
+    @Autowired
+    LcAppEmailServiceImpl lcAppEmailService;
     @RequestMapping("/sendEmail")
     public String sendEmail(@CookieValue("lcApp.userName")String userName,Model model)
     {
@@ -19,11 +22,12 @@ public class EmailController {
         return "sendemail-page";
     }
     @RequestMapping("/processEmail")
-    public String processEmail(@ModelAttribute("emailDTO") EmailDTO emailDTO)
+    public String processEmail(@SessionAttribute("userInfo") UserInfoDTO userInfoDTO, @ModelAttribute("emailDTO") EmailDTO emailDTO)
     {
         /*String username= (String)session.getAttribute("userName");
         String newUserName="Ms."+username;
         model.addAttribute("userName",newUserName);*/
+       lcAppEmailService.sendEmail(userInfoDTO.getUserName(),emailDTO.getUserEmail(),"FRIEND");
 
         return "processemail-page";
     }

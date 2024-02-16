@@ -7,11 +7,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.Properties;
+
 @EnableWebMvc //Enbles all the mvc features
 @Configuration
 @ComponentScan(basePackages = "controllers")
@@ -41,6 +46,18 @@ public class LoveCalculatorAppConfig implements WebMvcConfigurer {
         return localValidatorFactoryBean;
     }
 
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl javaMailSenderImpl = new JavaMailSenderImpl();
+        javaMailSenderImpl.setHost("stmp.gmail.com");
+        javaMailSenderImpl.setUsername("prasannareddy3555@gmail.com");
+        javaMailSenderImpl.setPort(567);
+        Properties mailProperties=new Properties();
+        mailProperties.put("mail.smtp.starttls.enable", true);
+        mailProperties.put("mail.smtp.ssl.trust","stmp.gmail.com");
+        return javaMailSenderImpl;
+    }
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new PhoneNumberFormatter());
@@ -50,4 +67,5 @@ public class LoveCalculatorAppConfig implements WebMvcConfigurer {
     public Validator getValidator(){
     return validator();
 }
+
 }

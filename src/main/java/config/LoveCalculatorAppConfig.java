@@ -19,7 +19,7 @@ import java.util.Properties;
 
 @EnableWebMvc //Enbles all the mvc features
 @Configuration
-@ComponentScan(basePackages = "controllers")
+@ComponentScan(basePackages = {"controllers","service"})
 public class LoveCalculatorAppConfig implements WebMvcConfigurer {
 //we create view resolver in config file using class internalresourceviewresolverclass
     @Bean

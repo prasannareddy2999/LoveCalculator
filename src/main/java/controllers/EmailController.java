@@ -13,7 +13,7 @@ import service.LcAppEmailServiceImpl;
 @Controller
 public class EmailController {
     @Autowired
-    LcAppEmailServiceImpl lcAppEmailService;
+    LcAppEmailService lcAppEmailService;
     @RequestMapping("/sendEmail")
     public String sendEmail(@CookieValue("lcApp.userName")String userName,Model model)
     {

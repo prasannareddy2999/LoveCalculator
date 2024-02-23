@@ -15,9 +15,9 @@ public class EmailController {
     @Autowired
     LcAppEmailService lcAppEmailService;
     @RequestMapping("/sendEmail")
-    public String sendEmail(@CookieValue("lcApp.userName")String userName,Model model)
+    public String sendEmail(@SessionAttribute("userInfo")UserInfoDTO userInfoDTO,Model model)
     {
-        model.addAttribute("userName",userName);
+        model.addAttribute("userName",userInfoDTO.getUserName());
         model.addAttribute("emailDTO", new EmailDTO());
         return "sendemail-page";
     }
